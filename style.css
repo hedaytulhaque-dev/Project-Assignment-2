@@ -7,7 +7,8 @@
 body {
     font-family: 'Inter', sans-serif;
     background: linear-gradient(to bottom, #12001f, #1b0033, #0b0014);
-    color: #ffffff;
+    color: #fff;
+    scroll-behavior: smooth;
 }
 
 img {
@@ -18,17 +19,19 @@ img {
 header {
     position: fixed;
     width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 100;
     backdrop-filter: blur(12px);
     background: rgba(0, 0, 0, 0.35);
-    z-index: 100;
 }
 
 .navbar {
     max-width: 1400px;
     margin: auto;
     padding: 18px 24px;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
     align-items: center;
 }
 
@@ -45,12 +48,15 @@ header {
 
 .nav-menu {
     display: flex;
+    justify-self: center;
     gap: 40px;
 }
 
 .nav-menu a {
     color: white;
     text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
 }
 
 .nav-menu a:hover {
@@ -63,18 +69,26 @@ header {
     border-radius: 999px;
     background: linear-gradient(45deg, #9fa324, #b83ace, #db108a);
     text-decoration: none;
-    transition: all 0.3s ease;
+    transition: all 0.3s;
 }
 
 .nav-btn:hover {
     transform: scale(1.05);
-    box-shadow: 0 5px 15px rgba(255, 0, 204, 0.5);
+    box-shadow: 0 5px 15px rgba(219, 16, 138, 0.5);
+}
+
+.hamburger {
+    display: none;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
 }
 
 .hero {
-    padding: 180px 20px;
+    padding: 180px 20px 80px 20px;
     text-align: center;
     background: url("images/hero-bg.png") center/cover no-repeat;
+    position: relative;
 }
 
 .podcast-circle {
@@ -108,6 +122,7 @@ header {
     display: flex;
     gap: 16px;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .btn-primary {
@@ -118,7 +133,7 @@ header {
     display: flex;
     gap: 10px;
     text-decoration: none;
-    transition: all 0.3s ease;
+    transition: all 0.3s;
 }
 
 .btn-primary:hover {
@@ -136,7 +151,7 @@ header {
     background: rgba(255, 255, 255, 0.08);
     display: flex;
     gap: 10px;
-    transition: all 0.3s ease;
+    transition: all 0.3s;
 }
 
 .btn-outline:hover {
@@ -144,7 +159,6 @@ header {
     transform: translateY(-3px);
     box-shadow: 0 8px 20px rgba(0, 255, 94, 0.5);
 }
-
 
 .about {
     padding: 120px 20px;
@@ -160,45 +174,47 @@ header {
 
 .stat h1 {
     color: #00ff5e;
+    font-size: 28px;
 }
+
+.stat span {
+    display: block;
+    font-size: 14px;
+    margin-top: 6px;
+}
+
 
 .why {
     padding: 120px 20px;
     background: #1F0B2E;
-    /* dark purple background */
 }
 
 .features {
     max-width: 1300px;
     margin: auto;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(2, auto);
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-auto-rows: auto;
     gap: 25px;
 }
 
-/* Feature cards */
 .feature-card {
     background: #2a174a;
-    /* slightly lighter purple */
     border-radius: 18px;
     padding: 30px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    transition: all 0.3s ease;
+    transition: all 0.3s;
     cursor: pointer;
 }
 
-/* Hover effect for all cards */
 .feature-card:hover {
     transform: translateY(-8px);
     box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5);
     background: #3b1b6b;
-    /* slight gradient effect on hover */
 }
 
-/* Card positioning */
 .feature-card.tall {
     grid-row: span 2;
 }
@@ -207,81 +223,35 @@ header {
     grid-column: span 2;
 }
 
-/* Icon styling (gradient text for icons) */
-.feature-card .icon {
-    font-size: 36px;
-    margin-bottom: 16px;
-    background: linear-gradient(45deg, #ff00c8, #9b00ff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-/* Card title */
 .feature-card h3 {
     font-size: 20px;
-    color: #ffffff;
+    color: #fff;
     margin-bottom: 12px;
 }
 
-/* Card description */
 .feature-card p {
     font-size: 14px;
     color: #d0cbe6;
 }
 
-/* Responsive for mobile */
-@media (max-width: 576px) {
-    .features {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto;
-    }
-
-    .feature-card.tall,
-    .feature-card.wide {
-        grid-column: span 1;
-        grid-row: auto;
-    }
-}
-
-
-.episodes {
-    padding: 120px 20px;
-    text-align: center;
-    margin-top: -80px;
-}
-
-.episode-grid {
-    max-width: 1200px;
-    margin: auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 24px;
-}
-
-.episode-card {
-    background: #220033;
-    border-radius: 16px;
-    overflow: hidden;
-}
-
-.section-heading {
-    text-align: center;
-    font-size: 36px;
-    font-weight: 700;
-    color: #ffffff;
-    margin-bottom: 60px;
-}
-
 .featured-episodes {
     background: #1f1135;
     padding: 120px 20px;
+    text-align: center;
+}
+
+.section-heading {
+    font-size: 36px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 60px;
 }
 
 .episodes-wrapper {
     max-width: 1200px;
     margin: auto;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
 }
 
@@ -290,6 +260,12 @@ header {
     border-radius: 18px;
     padding: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    transition: 0.3s;
+}
+
+.episode-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
 }
 
 .video-box {
@@ -309,11 +285,10 @@ header {
     border: 0;
 }
 
-
 .episode-card h3 {
     margin-top: 18px;
     font-size: 18px;
-    color: #ffffff;
+    color: #fff;
 }
 
 .episode-card p {
@@ -337,6 +312,14 @@ header {
 .meet-host {
     background: #1f1135;
     padding: 120px 20px;
+    text-align: center;
+}
+
+.section-heading {
+    font-size: 42px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 60px;
 }
 
 .host-container {
@@ -345,9 +328,12 @@ header {
     background: #2a174a;
     border-radius: 22px;
     padding: 50px;
+
     display: flex;
     gap: 40px;
     align-items: center;
+
+    text-align: left;
 }
 
 .host-image {
@@ -359,36 +345,41 @@ header {
 
 .host-info h3 {
     font-size: 26px;
+    margin-bottom: 15px;
     color: #ffffff;
-    margin-bottom: 14px;
 }
 
 .host-info p {
-    font-size: 15px;
-    color: #d0cbe6;
+    color: #d6d1e8;
     line-height: 1.7;
+    margin-bottom: 25px;
 }
 
 .social-links {
-    margin-top: 20px;
     display: flex;
     gap: 16px;
 }
 
 .social-links img {
     width: 28px;
+    transition: transform 0.3s ease;
 }
 
-@media (max-width: 576px) {
-    .episodes-wrapper {
-        grid-template-columns: 1fr;
-    }
+.social-links img:hover {
+    transform: scale(1.15);
+}
 
+@media (max-width: 768px) {
     .host-container {
         flex-direction: column;
-        text-align: center;
+        text-align: left;
+    }
+
+    .host-image {
+        margin-bottom: 20px;
     }
 }
+
 
 .footer-section {
     background-image: url('images/footer-bg.png');
@@ -396,8 +387,7 @@ header {
     background-position: center;
     padding: 80px 20px;
     text-align: center;
-    color: #ffffff;
-    font-family: 'Inter', sans-serif;
+    color: #fff;
 }
 
 .footer-logo {
@@ -425,7 +415,7 @@ header {
     display: flex;
     align-items: center;
     gap: 8px;
-    color: #ffffff;
+    color: #fff;
     text-decoration: none;
     font-weight: 500;
     font-size: 16px;
@@ -443,11 +433,57 @@ header {
 
 .footer-copy {
     font-size: 14px;
-    color: #ffffff;
-    margin-top: 20px;
+    color: #fff;
 }
 
-@media (max-width: 576px) {
+@media (max-width:1024px) {
+    .features {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+}
+
+@media (max-width:768px) {
+    .navbar {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+    }
+
+    .hamburger {
+        display: block;
+    }
+}
+
+@media (max-width:576px) {
+    .episodes-wrapper {
+        grid-template-columns: 1fr;
+    }
+
+    .host-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .nav-menu {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        padding: 20px;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
     .footer-socials {
         flex-direction: column;
         gap: 15px;
