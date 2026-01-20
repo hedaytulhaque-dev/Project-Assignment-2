@@ -74,7 +74,7 @@ header {
 .hero {
     padding: 180px 20px;
     text-align: center;
-    background: url("assets/hero-bg.png") center/cover no-repeat;
+    background: url("images/hero-bg.png") center/cover no-repeat;
 }
 
 .podcast-circle {
@@ -391,7 +391,7 @@ header {
 }
 
 .footer-section {
-    background-image: url('assets/footer-bg.png');
+    background-image: url('images/footer-bg.png');
     background-size: cover;
     background-position: center;
     padding: 80px 20px;
